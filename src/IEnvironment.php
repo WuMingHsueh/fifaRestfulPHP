@@ -1,10 +1,10 @@
 <?php
-namespace BaseTemplatePHP;
+namespace FifaRestfulPHP;
 
 interface IEnvironment
 {
-    const PROJECT_NAME = "BaseTemplePHP";
-    const ROUTER_START = "/BaseTemplePHP/index.php";
-    const NAMESPACE_ROOT = "BaseTemplatePHP";
+    const PROJECT_NAME = "fifaRestfulPHP";
+    const ROUTER_START = "/fifaRestfulPHP/index.php";
+    const NAMESPACE_ROOT = "FifaRestfulPHP";
     // const CONNECTION_NAME = ["default", "sqlserver_dverental"];
 }
