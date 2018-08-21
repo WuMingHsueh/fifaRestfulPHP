@@ -1,7 +1,7 @@
 <?php
 namespace FifaRestfulPHP\Service;
 
-use Klein\klein;
+use Klein\Klein;
 use Klein\Request;
 use FifaRestfulPHP\IEnvironment;
 
@@ -25,18 +25,18 @@ class Routers
     {
         $this->initSubDirectory(); // 若專案目錄是 "sub Directory" 則加入此函數設定$_SERVER['REQUEST_URI']
 
-        $this->klein = new klein;
+        $this->klein = new Klein;
         foreach ($this->routers as $router) {
             $this->klein->respond($router['method'], $router['path'], function ($request, $resopnse) use ($router) {
-				$controller = (isset($router["injectionService"]))? new $router['controller'](new $router["injectionService"]) : new $router['controller'];
-				try {
-					return $controller->{$router['responseMethod']}($request);
-				} catch (\Exception $e) {
-					$resopnse->code($e->getCode());
-					return $e->getMessage();
-				}
+                $controller = (isset($router["injectionService"]))? new $router['controller'](new $router["injectionService"]) : new $router['controller'];
+                try {
+                    return $controller->{$router['responseMethod']}($request);
+                } catch (\Exception $e) {
+                    $resopnse->code($e->getCode());
+                    return $e->getMessage();
+                }
             });
-		}
+        }
         $this->klein->dispatch($this->kleinRequest);
         
         // initSubDirectory function (2) content
